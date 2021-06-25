@@ -1,0 +1,27 @@
+podman pull registry.paas.pajak.go.id:5000/3scale-amp20/memcached:1.4.15-89.1561619957
+
+
+skopeo copy docker-archive://root/images/3scale-amp26/3scale-amp20-memcached-1.4.15-89.1561619957.tar	 docker://bastion.pajak.go.id:5000/3scale-amp20/memcached:1.4.15-89.1561619957
+skopeo copy docker-archive://root/images/3scale-amp26/3scale-amp26-3scale-operator-1.9-7.tar	 docker://bastion.pajak.go.id:5000/3scale-amp26/3scale-operator:1.9-7
+skopeo copy docker-archive://root/images/3scale-amp26/3scale-amp26-apicast-gateway-1.15-9.tar	 docker://bastion.pajak.go.id:5000/3scale-amp26/apicast-gateway:1.15-9
+skopeo copy docker-archive://root/images/3scale-amp26/3scale-amp26-backend-1.9-24.tar	 docker://bastion.pajak.go.id:5000/3scale-amp26/backend:1.9-24
+skopeo copy docker-archive://root/images/3scale-amp26/3scale-amp26-system-1.10-29.tar	 docker://bastion.pajak.go.id:5000/3scale-amp26/system:1.10-29
+skopeo copy docker-archive://root/images/3scale-amp26/3scale-amp26-toolbox-1.2-5.tar	 docker://bastion.pajak.go.id:5000/3scale-amp26/toolbox:1.2-5
+skopeo copy docker-archive://root/images/3scale-amp26/3scale-amp26-zync-1.9-28.tar	 docker://bastion.pajak.go.id:5000/3scale-amp26/zync:1.9-28
+skopeo copy docker-archive://root/images/rhscl-postgresql-10-rhel7-1-41.tar	 docker://bastion.pajak.go.id:5000/rhscl/postgresql-10-rhel7:1-41
+skopeo copy docker-archive://root/images/rhscl-mysql-57-rhel7-5.7-47.tar	 docker://bastion.pajak.go.id:5000/rhscl/mysql-57-rhel7:5.7-47
+skopeo copy docker-archive://root/images/rhscl-redis-32-rhel7-3.2-45.tar	 docker://bastion.pajak.go.id:5000/rhscl/redis-32-rhel7:3.2-45
+
+
+skopeo copy docker-archive://root/images/3scale-amp26/3scale-amp20-memcached-1.4.15-89.1561619957.tar	 docker://bastion.pajak.go.id:5000/3scale-amp20/memcached:latest
+skopeo copy docker-archive://root/images/3scale-amp26/3scale-amp26-3scale-operator-1.9-7.tar	 docker://bastion.pajak.go.id:5000/3scale-amp26/3scale-operator:latest
+skopeo copy docker-archive://root/images/3scale-amp26/3scale-amp26-apicast-gateway-1.15-9.tar	 docker://bastion.pajak.go.id:5000/3scale-amp26/apicast-gateway:latest
+skopeo copy docker-archive://root/images/3scale-amp26/3scale-amp26-backend-1.9-24.tar	 docker://bastion.pajak.go.id:5000/3scale-amp26/backend:latest
+skopeo copy docker-archive://root/images/3scale-amp26/3scale-amp26-system-1.10-29.tar	 docker://bastion.pajak.go.id:5000/3scale-amp26/system:latest
+skopeo copy docker-archive://root/images/3scale-amp26/3scale-amp26-toolbox-1.2-5.tar	 docker://bastion.pajak.go.id:5000/3scale-amp26/toolbox:latest
+skopeo copy docker-archive://root/images/3scale-amp26/3scale-amp26-zync-1.9-28.tar	 docker://bastion.pajak.go.id:5000/3scale-amp26/zync:latest
+skopeo copy docker-archive://root/images/3scale-amp26/3scale-amp26-zync-1.9-28.tar	 docker://bastion.pajak.go.id:5000/3scale-amp26/zync:latest
+skopeo copy docker-archive://root/images/rhscl-postgresql-10-rhel7-1-41.tar	 docker://bastion.pajak.go.id:5000/rhscl/postgresql-10-rhel7:latest
+skopeo copy docker-archive://root/images/rhscl-mysql-57-rhel7-5.7-47.tar	 docker://bastion.pajak.go.id:5000/rhscl/mysql-57-rhel7:5.7
+skopeo copy docker-archive://root/images/rhscl-redis-32-rhel7-3.2-45.tar	 docker://bastion.pajak.go.id:5000/rhscl/redis-32-rhel7:3.2
+

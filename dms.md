@@ -6,7 +6,23 @@ sudo apt install postgresql postgresql-contrib
 sudo systemctl start postgresql@11-main
 sudo systemctl status postgresql@11-main
 ```
+```
+sudo -u postgres vi /etc/postgresql/11/main/postgresql.conf
+```
+```
+listen_addresses = "*":
+```
+```
+sudo -u postgres vi /etc/postgresql/11/main/pg_hba.conf
+```
 
+```
+host    all             all              0.0.0.0/0                       md5
+host    all             all              ::/0                            md5
+```
+```
+sudo systemctl restart postgresql@11-main
+```
 ```
 sudo -u postgres psql
 \l
@@ -56,5 +72,18 @@ insert into phone (employee_id,phone,type)values (2,'081211112','home');
 exit
 ```
 
+```
+gcloud compute instances create pgdb-client --project=nugraha-51412 --zone=us-central1-a --machine-type=e2-small --network-interface=network-tier=PREMIUM,subnet=subnet-us --image=debian-10-buster-v20210817 --image-project=debian-cloud --boot-disk-size=10GB --boot-disk-type=pd-balanced --boot-disk-device-name=pgdb-client
+```
+```
+sudo apt-get update
+sudo apt-get install -y postgresql-client
+
+sudo -u postgres psql -U adit -W -h pgdb-source -d dsemployee
 
 
+```
+```
+```
+```
+```

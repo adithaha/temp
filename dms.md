@@ -1,10 +1,13 @@
 #dms here
 
+```
 sudo apt-get update
 sudo apt install postgresql postgresql-contrib
 sudo systemctl start postgresql@11-main
 sudo systemctl status postgresql@11-main
+```
 
+```
 sudo -u postgres psql
 \l
 CREATE USER adit WITH PASSWORD 'adit';
@@ -38,7 +41,8 @@ CREATE TABLE phone
 );
 
 exit
-
+```
+```
 sudo -u postgres psql -U adit -W -h localhost -d dsemployee
 
 insert into employee (name,address)values ('adit','jakarta');
@@ -49,10 +53,8 @@ insert into phone (employee_id,phone,type)values (1,'081111112','office');
 insert into phone (employee_id,phone,type)values (2,'081211111','hp');
 insert into phone (employee_id,phone,type)values (2,'081211112','home');
 
-
-
 exit
-
+```
 
 
 

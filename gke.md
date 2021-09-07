@@ -37,13 +37,14 @@ gcloud compute networks subnets create singapore --project=${PROJECT} --range=10
 
 ## create gke cluster
 ```
-gcloud container clusters create sample-cluster --zone "asia-southeast2-c" --machine-type "e2-medium" --release-channel "stable" --network "devnet" --subnetwork "jakarta" --num-nodes 3 --enable-shielded-nodes
+gcloud services enable container.googleapis.com --project=${PROJECT}
+gcloud container clusters create sample-cluster --zone "asia-southeast2-c" --machine-type "e2-medium" --release-channel "stable" --network "devnet" --subnetwork "jakarta" --num-nodes 3 --enable-shielded-nodes --project=${PROJECT}
 ```
 
 
 # delete
 ```
-gcloud container clusters delete sample-cluster --zone "asia-southeast2-c"
+gcloud container clusters delete sample-cluster --zone "asia-southeast2-c" --project=${PROJECT}
 ```
 ```
 gcloud projects delete ${PROJECT}

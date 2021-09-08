@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat-gke-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tomcat-gke
+  template:
+    metadata:
+      labels:
+        app: tomcat-gke
+    spec:
+      containers:
+      - name: tomcat-gke
+        image: tomcat:jre11-openjdk-slim
+        ports:
+        - containerPort: 8080

@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: my-ingress
+  annotations:
+    # gce or nginx
+    kubernetes.io/ingress.class: gce
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /tomcat-gke
+            backend:
+              serviceName: tomcat-gke
+              servicePort: 8080
+    - http:
+        paths:
+          - path: /tomcat-gke2
+            backend:
+              serviceName: tomcat-gke2
+              servicePort: 8080
+              

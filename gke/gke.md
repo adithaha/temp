@@ -26,6 +26,10 @@ gcloud resource-manager org-policies disable-enforce compute.requireOsLogin --pr
 # dev
 ```
 PROJECT=[PROJECT_ID]
+
+gcloud compute instances create gke-client --machine-type e2-medium --zone asia-southeast2-c --network devnet --subnet jakarta
+
+gcloud compute ssh --project=${PROJECT} --zone=asia-southeast2-c gke-client
 ```
 ## create vpc
 ```
@@ -33,12 +37,22 @@ gcloud compute networks create devnet --project=${PROJECT} --subnet-mode=custom 
 gcloud compute networks subnets create jakarta --project=${PROJECT} --range=10.148.0.0/20 --network=devnet --region=asia-southeast2
 gcloud compute networks subnets create singapore --project=${PROJECT} --range=10.146.0.0/20 --network=devnet --region=asia-southeast1
 ```
-
+## create firewall
+```
+gcloud compute firewall-rules create allow-ssh-ingress-from-iap \
+  --direction=INGRESS \
+  --action=allow \
+  --rules=tcp:22 \
+  --source-ranges=35.235.240.0/20 \
+  --project=${PROJECT} \
+  --network=devnet
+```
 
 ## create gke cluster
 ```
 gcloud services enable container.googleapis.com --project=${PROJECT}
 gcloud container clusters create sample-cluster --zone "asia-southeast2-c" --machine-type "e2-medium" --release-channel "stable" --network "devnet" --subnetwork "jakarta" --num-nodes 3 --enable-shielded-nodes --project=${PROJECT}
+gcloud container clusters get-credentials sample-cluster --zone "asia-southeast2-c" --project=${PROJECT}
 ```
 
 ## deploy tomcat
@@ -64,6 +78,17 @@ kubectl exec -i -t ${POD_NAME} -- /bin/bash
 Create external lb
 ```
 kubectl create service loadbalancer tomcat-gke2 --tcp=8080:8080
+kubectl get svc
+```
+Create nodeport
+```
+kubectl create -f service-nodeport.yaml
+kubectl get svc
+```
+
+Create ingress
+```
+kubectl create -f ingress.yaml
 kubectl get svc
 ```
 

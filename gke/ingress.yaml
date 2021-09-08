@@ -10,6 +10,7 @@ spec:
     - http:
         paths:
           - path: /tomcat-gke
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: tomcat-gke
@@ -18,6 +19,7 @@ spec:
     - http:
         paths:
           - path: /tomcat-gke2
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: tomcat-gke2

@@ -1,15 +1,15 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: my-ingress
+  name: tomcat-gke-ingress
   annotations:
-    # gce or nginx
+    # gce or gce-internal or nginx
     kubernetes.io/ingress.class: gce
 spec:
   rules:
     - http:
         paths:
-          - path: /tomcat-gke
+          - path: /*
             pathType: ImplementationSpecific
             backend:
               service:

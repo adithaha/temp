@@ -41,6 +41,31 @@ gcloud services enable container.googleapis.com --project=${PROJECT}
 gcloud container clusters create sample-cluster --zone "asia-southeast2-c" --machine-type "e2-medium" --release-channel "stable" --network "devnet" --subnetwork "jakarta" --num-nodes 3 --enable-shielded-nodes --project=${PROJECT}
 ```
 
+## deploy tomcat
+
+Create namespace
+```
+kubectl create namespace tomcat-gke
+kubectl config set-context --current --namespace=tomcat-gke
+kubectl config view --minify | grep namespace:
+```
+Deploy tomcat
+```
+kubectl apply -f deployment.yaml
+kubectl describe deployment tomcat-gke-deployment
+kubectl get pods -l app=tomcat-gke2
+POD_NAME=[POD_NAME]
+```
+Get logs and enter shell
+```
+kubectl logs -f ${POD_NAME}
+kubectl exec -i -t ${POD_NAME} -- /bin/bash
+```
+Create external lb
+```
+kubectl create service loadbalancer tomcat-gke2 --tcp=8080:8080
+kubectl get svc
+```
 
 # delete
 ```

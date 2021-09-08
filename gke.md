@@ -25,7 +25,7 @@ gcloud resource-manager org-policies disable-enforce compute.requireOsLogin --pr
 ```
 # dev
 ```
-PROJECT=gke-test-325311
+PROJECT=[PROJECT_ID]
 ```
 ## create vpc
 ```

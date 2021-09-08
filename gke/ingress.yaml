@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: my-ingress
@@ -11,12 +11,16 @@ spec:
         paths:
           - path: /tomcat-gke
             backend:
-              serviceName: tomcat-gke
-              servicePort: 8080
+              service:
+                name: tomcat-gke
+                port: 
+                  number: 8080
     - http:
         paths:
           - path: /tomcat-gke2
             backend:
-              serviceName: tomcat-gke2
-              servicePort: 8080
+              service:
+                name: tomcat-gke2
+                port: 
+                  number: 8080
               

@@ -13,7 +13,7 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: tomcat-gke
+                name: tomcat-gke-nodeport
                 port: 
                   number: 8080
     - http:
@@ -22,7 +22,7 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: tomcat-gke2
+                name: tomcat-gke2-nodeport
                 port: 
                   number: 8080
               

@@ -9,7 +9,7 @@ spec:
   rules:
     - http:
         paths:
-          - path: /*
+          - path: /tomcat-gke
             pathType: ImplementationSpecific
             backend:
               service:

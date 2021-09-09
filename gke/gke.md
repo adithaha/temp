@@ -26,6 +26,7 @@ gcloud resource-manager org-policies disable-enforce compute.requireOsLogin --pr
 # dev
 ```
 PROJECT=[PROJECT_ID]
+gcloud config set project ${PROJECT}
 
 gcloud compute instances create gke-client --machine-type e2-medium --zone asia-southeast2-c --network devnet --subnet jakarta
 
@@ -92,7 +93,11 @@ kubectl create -f ingress.yaml
 kubectl get svc
 ```
 
-# delete
+## stop cluster
+```
+gcloud container clusters resize sample-cluster --node-pool default-pool --num-nodes 0 --zone asia-southeast2-c
+```
+## delete
 ```
 gcloud container clusters delete sample-cluster --zone "asia-southeast2-c" --project=${PROJECT}
 ```

@@ -92,10 +92,22 @@ Create ingress
 kubectl create -f ingress.yaml
 kubectl get svc
 ```
-
+```
+gcloud compute firewall-rules create test-nodeport \
+  --direction=INGRESS \
+  --action=allow \
+  --rules=tcp:32127,tcp:31508 \
+  --network=devnet
+```
 ## stop cluster
 ```
 gcloud container clusters resize sample-cluster --node-pool default-pool --num-nodes 0 --zone asia-southeast2-c
+gcloud compute instances stop gke-client --zone asia-southeast2-c
+```
+## start cluster
+```
+gcloud container clusters resize sample-cluster --node-pool default-pool --num-nodes 3 --zone asia-southeast2-c
+gcloud compute instances start gke-client --zone asia-southeast2-c
 ```
 ## delete
 ```

@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: tomcat-gke-ingress
+  name: hello-app-ingress
   annotations:
     # gce or gce-internal or nginx
     kubernetes.io/ingress.class: gce
@@ -9,20 +9,20 @@ spec:
   rules:
     - http:
         paths:
-          - path: /tomcat-gke
+          - path: /hello-app
             pathType: ImplementationSpecific
             backend:
               service:
-                name: tomcat-gke-nodeport
+                name: hello-app-nodeport
                 port: 
                   number: 8080
     - http:
         paths:
-          - path: /tomcat-gke2
+          - path: /hello-app
             pathType: ImplementationSpecific
             backend:
               service:
-                name: tomcat-gke2-nodeport
+                name: hello-app2-nodeport
                 port: 
                   number: 8080
               

@@ -10,6 +10,7 @@ gcloud projects create --name=gke-test
 PROJECT=[PROJECT_ID]
 BILLING_ACCOUNT=[BILLING_ACCOUNT]
 ```
+```
 gcloud beta billing projects link ${PROJECT} --billing-account ${BILLING_ACCOUNT}
 ```
 ```

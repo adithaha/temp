@@ -18,7 +18,7 @@ spec:
                   number: 8080
     - http:
         paths:
-          - path: /hello-app
+          - path: /hello-app2
             pathType: ImplementationSpecific
             backend:
               service:

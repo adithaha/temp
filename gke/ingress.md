@@ -14,11 +14,11 @@ kubectl config set-context --current --namespace=sample-app
 ## External Ingress
 Create service nodeport
 ```
-kubectl create -f service-nodeport.yaml
+kubectl create -f ingress/service-nodeport.yaml
 kubectl get svc
 ```
 Create ingress
 ```
-kubectl create -f ingress.yaml
+kubectl create -f ingress/ingress.yaml
 kubectl get svc
 ```

@@ -50,3 +50,6 @@ gcloud compute firewall-rules create allow-ssh-ingress-from-iap \
   --project=${PROJECT} \
   --network=devnet
 ```
+
+# Next
+

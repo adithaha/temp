@@ -28,8 +28,9 @@ gcloud resource-manager org-policies disable-enforce compute.requireOsLogin --pr
 PROJECT=[PROJECT_ID]
 gcloud config set project ${PROJECT}
 
-gcloud compute instances create gke-client --machine-type e2-medium --zone asia-southeast2-c --network devnet --subnet jakarta
+gcloud services enable compute.googleapis.com --project=${PROJECT}
 
+gcloud compute instances create gke-client --machine-type e2-medium --zone asia-southeast2-c --network devnet --subnet jakarta
 gcloud compute ssh --project=${PROJECT} --zone=asia-southeast2-c gke-client
 ```
 ## create vpc
@@ -60,15 +61,15 @@ gcloud container clusters get-credentials sample-cluster --zone "asia-southeast2
 
 Create namespace
 ```
-kubectl create namespace tomcat-gke
-kubectl config set-context --current --namespace=tomcat-gke
+kubectl create namespace sample-app
+kubectl config set-context --current --namespace=sample-app
 kubectl config view --minify | grep namespace:
 ```
 Deploy tomcat
 ```
 kubectl apply -f deployment.yaml
-kubectl describe deployment tomcat-gke-deployment
-kubectl get pods -l app=tomcat-gke2
+kubectl describe deployment nginx-gke-deployment
+kubectl get pods -l app=nginx-gke
 POD_NAME=[POD_NAME]
 ```
 Get logs and enter shell
@@ -78,7 +79,7 @@ kubectl exec -i -t ${POD_NAME} -- /bin/bash
 ```
 Create external lb
 ```
-kubectl create service loadbalancer tomcat-gke2 --tcp=8080:8080
+kubectl create service loadbalancer nginx-gke --tcp=80:80
 kubectl get svc
 ```
 Create nodeport
@@ -112,6 +113,9 @@ gcloud compute instances start gke-client --zone asia-southeast2-c
 ## delete
 ```
 gcloud container clusters delete sample-cluster --zone "asia-southeast2-c" --project=${PROJECT}
+```
+```
+gcloud compute instances stop gke-client --zone asia-southeast2-c
 ```
 ```
 gcloud projects delete ${PROJECT}

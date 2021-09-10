@@ -1,23 +1,25 @@
 
-# admin
+# Create Project
+Administrator will create project, assign billing account and add non-admin user as project owner
 
-## create project
-
+## create project with billing account
 ```
 gcloud projects create --name=gke-test
-
+```
+```
 PROJECT=[PROJECT_ID]
 BILLING_ACCOUNT=[BILLING_ACCOUNT]
-
+```
 gcloud beta billing projects link ${PROJECT} --billing-account ${BILLING_ACCOUNT}
 ```
 ```
 gcloud projects add-iam-policy-binding ${PROJECT} --member=user:[USER_EMAIL] --role=roles/owner
 ```
-## enable policy with gui
+## enable policy
+Allow all for org policy below
 ```
-gcloud resource-manager org-policies disable-enforce compute.vmCanIpForward --project=${PROJECT}
-gcloud resource-manager org-policies disable-enforce compute.vmExternalIpAccess --project=${PROJECT}
+compute.vmCanIpForward
+compute.vmExternalIpAccess
 ```
 ```
 gcloud resource-manager org-policies disable-enforce compute.requireShieldedVm --project=${PROJECT}

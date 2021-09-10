@@ -18,6 +18,15 @@ spec:
                   number: 8080
     - http:
         paths:
+          - path: /hello-app1
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: hello-app1-nodeport
+                port: 
+                  number: 8080
+    - http:
+        paths:
           - path: /hello-app2
             pathType: ImplementationSpecific
             backend:

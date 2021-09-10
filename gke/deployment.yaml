@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tomcat-gke-deployment
+  name: nginx-gke-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tomcat-gke
+      app: nginx-gke
   template:
     metadata:
       labels:
-        app: tomcat-gke
+        app: nginx-gke
     spec:
       containers:
       - name: tomcat-gke
-        image: tomcat:jre11-openjdk-slim
+        image: nginx:1.21.3-alpine
         ports:
         - containerPort: 8080

@@ -1,3 +1,4 @@
+## Create GKE cluster and deploy Hello App
 ## create gke cluster
 ```
 gcloud services enable container.googleapis.com --project=${PROJECT}
@@ -6,7 +7,6 @@ gcloud container clusters get-credentials sample-cluster --zone "asia-southeast2
 ```
 
 ## deploy Hello App
-
 Create namespace
 ```
 kubectl create namespace sample-app

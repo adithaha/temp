@@ -31,3 +31,6 @@ Create external lb
 kubectl create service loadbalancer hello-app --tcp=8080:8080
 kubectl get svc
 ```
+
+# Next
+3. [Internal load balancer](https://github.com/adithaha/temp/blob/main/gke/internal-lb.md)

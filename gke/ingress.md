@@ -11,6 +11,10 @@ gcloud config set project ${PROJECT}
 gcloud container clusters get-credentials sample-cluster --zone "asia-southeast2-c" --project=${PROJECT}
 kubectl config set-context --current --namespace=sample-app
 ```
+## Deploy second app
+```
+kubectl apply -f ingress/deployment.yaml
+```
 ## External Ingress
 Create service nodeport
 ```

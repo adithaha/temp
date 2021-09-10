@@ -29,6 +29,7 @@ gcloud resource-manager org-policies disable-enforce compute.requireOsLogin --pr
 ```
 # Create VPC and enable IAP
 Login with non-admin role.
+## Set parameter
 ```
 PROJECT=[PROJECT_ID]
 gcloud config set project ${PROJECT}

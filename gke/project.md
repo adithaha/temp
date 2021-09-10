@@ -1,7 +1,7 @@
 
 # Create Project
-Administrator will create project, assign billing account and add non-admin user as project owner
-
+Administrator will create project, assign billing account and add non-admin user as project owner.
+Login with admin role.
 ## create project with billing account
 ```
 gcloud projects create --name=gke-test
@@ -26,7 +26,8 @@ compute.vmExternalIpAccess
 gcloud resource-manager org-policies disable-enforce compute.requireShieldedVm --project=${PROJECT}
 gcloud resource-manager org-policies disable-enforce compute.requireOsLogin --project=${PROJECT}
 ```
-# dev
+# Create VPC and enable IAP
+Login with non-admin role.
 ```
 PROJECT=[PROJECT_ID]
 gcloud config set project ${PROJECT}

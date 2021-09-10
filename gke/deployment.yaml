@@ -13,7 +13,7 @@ spec:
         app: nginx-gke
     spec:
       containers:
-      - name: tomcat-gke
+      - name: nginx-gke
         image: nginx:1.21.3-alpine
         ports:
-        - containerPort: 8080
+        - containerPort: 80

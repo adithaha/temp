@@ -24,5 +24,5 @@ kubectl get svc
 Create ingress
 ```
 kubectl create -f ingress/ingress.yaml
-kubectl get svc
+kubectl get ingress
 ```

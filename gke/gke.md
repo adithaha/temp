@@ -57,7 +57,7 @@ gcloud container clusters create sample-cluster --zone "asia-southeast2-c" --mac
 gcloud container clusters get-credentials sample-cluster --zone "asia-southeast2-c" --project=${PROJECT}
 ```
 
-## deploy tomcat
+## deploy Hello App
 
 Create namespace
 ```
@@ -65,11 +65,11 @@ kubectl create namespace sample-app
 kubectl config set-context --current --namespace=sample-app
 kubectl config view --minify | grep namespace:
 ```
-Deploy tomcat
+Deploy Hello App
 ```
 kubectl apply -f deployment.yaml
-kubectl describe deployment nginx-gke-deployment
-kubectl get pods -l app=nginx-gke
+kubectl describe deployment hello-app-deployment
+kubectl get pods -l app=hello-app
 POD_NAME=[POD_NAME]
 ```
 Get logs and enter shell
@@ -77,11 +77,14 @@ Get logs and enter shell
 kubectl logs -f ${POD_NAME}
 kubectl exec -i -t ${POD_NAME} -- /bin/bash
 ```
+## External Load balancer
 Create external lb
 ```
-kubectl create service loadbalancer nginx-gke --tcp=80:80
+kubectl create service loadbalancer hello-app --tcp=8080:8080
 kubectl get svc
 ```
+
+## External Ingress
 Create nodeport
 ```
 kubectl create -f service-nodeport.yaml

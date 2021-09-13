@@ -8,9 +8,9 @@ Setup internal load balancer, and test from client VM
 kubectl config set-context --current --namespace=sample-app
 kubectl apply -f ilb/service.yaml
 ```
-Check load balancer IP
+Check load balancer IP in EXTERNAL-IP column
 ```
-kubectl get svc
+kubectl get svc hello-app-internal
 ```
 
 # Create Client VM

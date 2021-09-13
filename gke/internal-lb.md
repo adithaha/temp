@@ -20,13 +20,22 @@ gcloud config set project ${PROJECT}
 gcloud services enable compute.googleapis.com --project=${PROJECT}
 gcloud compute instances create gke-client --machine-type e2-medium --zone asia-southeast2-c --network devnet --subnet jakarta
 ```
-
+## create firewall to access client SSH
+```
+gcloud compute firewall-rules create allow-ssh-ingress-from-iap \
+  --direction=INGRESS \
+  --action=allow \
+  --rules=tcp:22 \
+  --source-ranges=35.235.240.0/20 \
+  --project=${PROJECT} \
+  --network=devnet
+```
 # Call App from client VM
-SSH into vlient VM
+SSH into client VM
 ```
-gcloud compute ssh --project=${PROJECT} --zone=asia-southeast2-c gke-client
+gcloud compute ssh --project=${PROJECT} --zone=asia-southeast2-c gke-client --tunnel-through-iap
 ```
-Call Hello App using internal load balancer
+Inside client VM, call Hello App using internal load balancer
 ```
 curl <IP-INTERNAL-LB>:8080
 ```

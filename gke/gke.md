@@ -68,8 +68,10 @@ kubectl get svc
 gcloud compute firewall-rules create test-nodeport \
   --direction=INGRESS \
   --action=allow \
-  --rules=tcp:32127,tcp:31508 \
+  --rules=tcp:31988,tcp:30743,tcp:30352 \
   --network=devnet
+
+gcloud compute firewall-rules delete test-nodeport
 ```
 ## stop cluster
 ```

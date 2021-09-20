@@ -16,7 +16,7 @@ gcloud container clusters delete sample-cluster --zone "asia-southeast2-c" --pro
 ```
 Delete client VM
 ```
-gcloud compute instances stop gke-client --zone asia-southeast2-c
+gcloud compute instances delete gke-client --zone asia-southeast2-c
 ```
 Delete project
 ```

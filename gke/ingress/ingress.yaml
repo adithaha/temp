@@ -4,7 +4,7 @@ metadata:
   name: hello-app-ingress
   annotations:
     # gce or gce-internal or nginx
-    kubernetes.io/ingress.class: gce
+    kubernetes.io/spec.ingressClassName: gce
 spec:
   rules:
     - http:
